@@ -22,10 +22,10 @@ iiiDay=$(date -d "3 day ago" +%d)
 # 4 Days Ago
 ivDay=$(date -d "4 day ago" +%d)
 # Destination File Name Utilizing World Name & Current Date
-zFile="$sFile_$cDate"
+zBackup="'$sWorld'_$cDate"
 
 # Checks if the signal file is present
-if [[ ! -f "$dDir$sTxt" ]]; then
+if [[ ! -f "$dDir$signal" ]]; then
 
  # Informs user that there is NO signal file in the target directory
  echo "Signal file not found in destination directory. Exiting..."
@@ -38,7 +38,7 @@ fi
 cd "$sDir"
 
 # Compress the current contents of the server world folder into a new backup folder
-zip -r "$dDir$zFile.zip" "$sFile"
+zip -r "$dDir$zBackup.zip" "$sWorld"
 
 # Change the active directory to the server backups folder
 cd "$dDir"
@@ -47,9 +47,9 @@ cd "$dDir"
 shopt -s extglob
 
 # Deletes all folders and their contents that do NOT contain the current year. Also excludes the signal file from deletion
-rm -rf !(*_$cYear-*|*$sTxt*)
+rm -rf !(*_$cYear-*|$signal)
  
 # Deletes all folders and their contents that do NOT contain the current day, previous 4 days, or that are NOT the first day of a month. Also excludes the signal file from deletion
-rm -rf !(*-$fDay*|*-$cDay*|*-$iDay*|*-$iiDay*|*-$iiiDay*|*-$ivDay*|*$sTxt*)
+rm -rf !(*-$fDay*|*-$cDay*|*-$iDay*|*-$iiDay*|*-$iiiDay*|*-$ivDay*|$signal)
 
 exit
