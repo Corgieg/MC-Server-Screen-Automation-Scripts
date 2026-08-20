@@ -40,8 +40,10 @@ if [[ "$exists" != *No\ screen\ session\ found.* ]]; then
  screen -S $sSoc -X stuff "`printf "say $mcNotice\r"`";
  sleep 5
 
- # Loop to warn players of server shutdown
+ # Reset Time
  time=$sTimer
+
+ # Loop to warn players of server shutdown
  while ((time > 0))
  do
   screen -S $sSoc -X stuff "`printf "say SCHEDULED SHUTDOWN IN $time SECONDS\r"`";
