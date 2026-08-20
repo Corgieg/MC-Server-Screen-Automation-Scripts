@@ -10,9 +10,9 @@ if [[ "$exists" == *No\ screen\ session\ found.* ]]; then
  # Clear any dead screen sockets
  screen -wipe
  # Clear contents of the log file from previous socket
- truncate -s 0 $sLog
+ truncate -s 0 $log
  # Create and detach from the socket for running the Minecraft server
- screen -L -Logfile $sLog -dmS $sSoc
+ screen -L -Logfile $log -dmS $sSoc
 
 else
 
