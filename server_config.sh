@@ -1,34 +1,27 @@
 #!/bin/bash
 
 # This configuration file contains the configurable variables used by the other scripts for your convenience.
+# Change the directories, file names, and other settings to suit your needs!
 
 ### Server Settings ###
 # Server Name
-sName="Mine-n-Blade"
-# Server Directory (Full path)
-sDir="/home/minecraft/MC Servers/$sName/Server/"
+sName="MinecraftServer"
+# Server World Folder Name
+sWorld="world"
 # Server Executable Name (Include file extension)
 sExe="run.sh"
-# Backup Source folder Name
-sFile="world"
-# Backup Destination Directory (Full path)
-dDir="/home/minecraft/MC Servers/$sName/Backups/"
-# World Backup Executable (Full path)
-bExe="/home/minecraft/Scripts/server_backup.sh"
+# Signal File Name (Include file extension)
+signal="danger_zone.txt"
+# Server Log File Name (Include file extension)
+log="server_log.txt"
+# Servers Root Directory (Full Path)
+rRoot="/home/minecraft/mcServers/"
+# Scripts Root Directory (Full Path)
+tRoot="/home/minecraft/scripts/"
 
 ### Screen Settings ###
 # Server Socket Name
 sSoc="minecraft"
-# Screen Start Executable (Full path)
-tExe="/home/minecraft/Scripts/server_screen_start.sh"
-# Screen Stop Executable (Full path)
-pExe="/home/minecraft/Scripts/server_screen_stop.sh"
-
-### Other Files ###
-# Server Log (Full path)
-sLog="/home/minecraft/Desktop/ServerActivity/ServerLog.txt"
-# Signal File Name (Include file extension)
-sTxt="danger_zone.txt"
 
 ### Server Shutdown Settings ###
 # Server Timer
@@ -43,3 +36,17 @@ mcSaveConfirm="WORLD SAVE COMPLETED"
 mcNotice="SHUTDOWN TIMER START"
 # Server Stop Message Text
 mcStopMessage="SHUTTING DOWN..."
+
+### Directories & Executables ###
+# Server Directory (Full path)
+sDir="$rRoot$sName/server/"
+# Backup Destination Directory (Full path)
+dDir="$rRoot$sName/backups/"
+# Server Log Directory (Full path)
+sLog="'$rRoot'serverActivity/$log"
+# Screen Start Executable (Full path)
+tExe="'$tRoot'server_screen_start.sh"
+# Screen Stop Executable (Full path)
+pExe="'$tRoot'server_screen_stop.sh"
+# World Backup Executable (Full path)
+bExe="'$tRoot'server_backup.sh"
