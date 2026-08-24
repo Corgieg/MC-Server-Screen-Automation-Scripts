@@ -1,6 +1,6 @@
 # Minecraft Server Automation Using GNU Screen Multiplexer
 
-The scripts can be set to execute on a regular basis using Cron jobs or similar tools.
+The scripts can be set to execute on a regular basis using Cron jobs, Systemd Timers, or similar tools.
 
 Below are descriptions of what each of the current scripts do:
 # 1. Server Screen Start
