@@ -1,0 +1,13 @@
+[Unit]
+Description=This service creates a Screen socket for and starts the Minecraft server
+After=network.target
+
+[Services]
+Type=forking
+User=your_username
+WorkingDirectory=/your/scripts/dir
+EnvironmentFile=/your/scripts/dir/server_config.sh
+ExecStart=/your/scripts/dir/server_start.sh
+
+[Install]
+WantedBy=multi-user.target
