@@ -60,8 +60,12 @@ if [[ "$exists" != *No\ screen\ session\ found.* ]]; then
  # Kill the Minecraft server screen socket
  $pExe
  
- # Execute world backup for the Minecraft server
- $bExe
+ # Execute world backup for the Minecraft server if backup is non-zero
+ if (( $backup )); then
+ 
+  $bExe
+ 
+ fi
  
 else
 
