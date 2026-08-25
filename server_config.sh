@@ -24,6 +24,8 @@ tRoot="/home/minecraft/scripts/"
 sSoc="minecraft"
 
 ### Server Shutdown Settings ###
+# Boolean Check For Enabling World Backup
+backup=1
 # Server Timer
 sTimer=30
 # Server Shutdown Greetings Text
