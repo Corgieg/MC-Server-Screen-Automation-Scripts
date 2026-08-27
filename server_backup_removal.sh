@@ -3,9 +3,6 @@
 # Configurable Variables Source
 source ./server_config.sh
 
-# Backup Destination Directory (Full path)
-dDir="/home/Corgieg/Documents/Backup-Testing/Testing-Directory/"
-
 # Checks if nMonths has a valid value
 if (( $nMonths > 120 | $nMonths < 0 )); then
  # Informs user that nMonths is invalid
