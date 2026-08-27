@@ -7,14 +7,12 @@ source ./server_config.sh
 mcSave="save-all"
 # Server Stop Command
 mcStop="stop"
-
 # Initialize Time
 time=$sTimer
 
 # Check if screen socket exists, and execute if it does
 exists=$(screen -S $sSoc -Q select .)
 if [[ "$exists" != *No\ screen\ session\ found.* ]]; then
-
  # Greet players
  screen -S $sSoc -X stuff "`printf "say $mcGreeting\r"`";
  sleep 5
@@ -59,20 +57,18 @@ if [[ "$exists" != *No\ screen\ session\ found.* ]]; then
 
  # Kill the Minecraft server screen socket
  $pExe
- 
  # Execute world backup for the Minecraft server if backup is non-zero
  if (( $backup )); then
- 
   $bExe
- 
  fi
- 
+ # Execute backup removal for the Minecraft server if remove is non-zero
+ if (( $remove )); then
+  $rExe
+ fi
 else
-
  # Informs user that there is NO screen socket to terminate
  echo "Screen socket not running"
  sleep 5
- 
 fi
 
-exit
+exit 0
