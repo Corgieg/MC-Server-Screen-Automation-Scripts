@@ -1,5 +1,5 @@
 [Unit]
-Description=This service gracefully stops the Minecraft server and its Screen socket, and its backs up the server's world
+Description=This service gracefully stops the Minecraft server and its Screen socket
 After=network.target
 
 [Services]
