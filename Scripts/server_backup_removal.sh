@@ -50,8 +50,8 @@ if (( $error )); then
  exit 1
 fi
 
-if [[ ! -f "${dDir}${sentinal}" ]]; then
- echo "Sentinal file not found in destination directory. Exiting..."
+if [[ ! -f "${dDir}${sentinel}" ]]; then
+ echo "Sentinel file not found in destination directory. Exiting..."
  sleep 5
  exit 0
 fi
@@ -65,7 +65,7 @@ shopt -s extglob
 # Purge Backups
 ####################
 if (( $purge )); then
- rm -rf !($sentinal)
+ rm -rf !($sentinel)
  exit 0
 fi
 
@@ -73,7 +73,7 @@ fi
 # Monthly
 ####################
 if (( $dMonthly )); then
- mSchedule=($sentinal)
+ mSchedule=($sentinel)
  # Loops through the set number of months to gather the dates that should be kept
  while (( $nMonths >= 0 ))
   do
@@ -86,7 +86,7 @@ fi
 # Daily & D.O.M.
 ####################
 if (( $dDaily || $kDOM )); then
- dSchedule=($sentinal)
+ dSchedule=($sentinel)
  if (( $kDOM )); then
   # If the specified day is single digit, add a leading 0 to match the naming convention
   if (( $kDOM < 10 )); then
