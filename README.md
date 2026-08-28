@@ -16,10 +16,10 @@ This script runs the screen start script and then runs the server's executable f
 This script gracefully stops and saves the server and then calls the screen stop script to kill the screen socket. Optionally, it can call the backup and backup removal scripts as well.
 
 # 5. Server Backup
-This script creates an archive of the server's world data and saves that archive to a separate directory designated in the config. The archives are automatically named with the current date (WorldName-YYYY-MM-DD). If the signal file designated in the config is not present in the destination directory, the script will not create a backup archive.
+This script creates an archive of the server's world data and saves that archive to a separate directory designated in the config. The archives are automatically named with the current date (WorldName-YYYY-MM-DD). If the sentinel file designated in the config is not present in the destination directory, the script will not create a backup archive.
 
 # 6. Server Backup Removal
-This script checks the archives in the backup destination directory, and deletes them based on criteria set in the config. If the signal file designated in the config is not present in the destination directory, this script will not run.
+This script checks the archives in the backup destination directory, and deletes them based on criteria set in the config. If the sentinel file designated in the config is not present in the destination directory, this script will not run.
   - Purge: If enabled, all files in the destination directory other than the signal file will be deleted.
   - dMonthly: If enabled, files will be deleted according to nMonths.
   - nMonths: The number of months that archives should be kept; 0 is current month only. Any archive older than N months will be deleted regardless of other settings
