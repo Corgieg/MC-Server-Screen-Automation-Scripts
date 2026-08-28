@@ -1,3 +1,5 @@
-The presence of this file in a directory allows the Minecraft server management scripts to delete files.
+WARNING:
+This is the sentinel file.
 
-Be careful!!!
+The presence of this file in a directory constitutes permission by the user for the scripts contained in this repo to add and remove files.
+Currently, the server backup and backup removal scripts use this file to determine if they are allowed to write to and delete from the target destination.
