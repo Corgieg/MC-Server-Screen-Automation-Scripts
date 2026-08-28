@@ -11,7 +11,7 @@ sWorld="world"
 # Server Executable Name (Include file extension)
 sExe="run.sh"
 # Signal File Name (Include file extension)
-sentinal="danger_zone.txt"
+sentinel="danger_zone.txt"
 # Server Log File Name (Include file extension)
 log="server_log.txt"
 # Servers Root Directory (Full Path)
