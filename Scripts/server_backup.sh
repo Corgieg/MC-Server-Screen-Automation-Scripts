@@ -8,8 +8,8 @@ cDate=$(date +%Y-%m-%d)
 # Destination Archive Name Utilizing World Name & Current Date
 zBackup="$sWorld-$cDate"
 
-if [[ ! -f "${dDir}${sentinal}" ]]; then
- echo "Sentinal file not found in destination directory. Exiting..."
+if [[ ! -f "${dDir}${sentinel}" ]]; then
+ echo "Sentinel file not found in destination directory. Exiting..."
  sleep 5
  exit 1
 fi
