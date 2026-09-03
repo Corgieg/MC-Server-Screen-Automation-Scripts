@@ -4,15 +4,25 @@
 source ./server_config.sh
 
 ####################
+# Error Handling
+####################
+if [[ -z "$sSoc" ]]; then
+ echo "\"sSoc\" null or unset. Exiting..."
+ sleep 5
+ exit 1
+fi
+
+####################
 # Screen Shutdown
 ####################
 exists=$(screen -S $sSoc -Q select .)
-if [[ "$exists" != *No\ screen\ session\ found.* ]]; then
- # Kill the screen socket
- screen -SX $sSoc quit
-else
+if [[ "$exists" == *No\ screen\ session\ found.* ]]; then
  echo "Socket does not exist. Exiting..."
  sleep 5
+ exit 0
 fi
+
+# Kill the screen socket
+screen -SX $sSoc quit
 
 exit 0

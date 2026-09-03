@@ -8,15 +8,13 @@
 sName="MinecraftServer"
 # Server World Folder Name
 sWorld="world"
-# Server Executable Name (Include file extension)
+# Server Executable (Include file extension)
 sExe="run.sh"
-# Signal File Name (Include file extension)
+# Signal File (Include file extension)
 sentinel="danger_zone.txt"
-# Server Log File Name (Include file extension)
-log="server_log.txt"
-# Servers Root Directory (Full Path)
+# Servers Root Directory (Full Path, include trailing slash)
 rRoot="/home/minecraft/mcServers/"
-# Scripts Root Directory (Full Path)
+# Scripts Root Directory (Full Path, include trailing slash)
 tRoot="/home/minecraft/scripts/"
 
 ##### Screen Settings #####
@@ -24,11 +22,11 @@ tRoot="/home/minecraft/scripts/"
 sSoc="minecraft"
 
 ##### Server Shutdown Settings #####
-# Boolean For Enabling World Backup After Shutdown (0 or 1)
+# Boolean - Enables World Backup After Shutdown (0 or 1)
 backup=0
-# Boolean For Enabling Backup Removal After Shutdown (0 or 1)
+# Boolean - Enables Backup Removal After Shutdown (0 or 1)
 remove=0
-# Server Timer
+# Server Timer (In seconds | Must be a positive integer)
 sTimer=30
 # Server Shutdown Greetings Text
 mcGreeting="GREETINGS, THE DAILY SHUTDOWN WILL COMMENCE SHORTLY"
@@ -42,13 +40,13 @@ mcNotice="SHUTDOWN TIMER START"
 mcStopMessage="SHUTTING DOWN..."
 
 ##### Server Backup Removal Settings #####
-# Booleon For Enabling Total Backup Removal (0 or 1)
+# Booleon - Enables Total Backup Removal (0 or 1)
 purge=0
-# Booleon For Enabling Backup Removal: Arbitrary Monthly Schedule (0 or 1)
+# Booleon - Enables Backup Removal: Arbitrary Monthly Schedule (0 or 1)
 dMonthly=0
 # Number Of Months To Backup (120-0 inclusive | 0 = current month)
 nMonths=0
-# Booleon For Enabling Backup Removal: Arbitrary Daily Schedule (0 or 1)
+# Booleon - Enables Backup Removal: Arbitrary Daily Schedule (0 or 1)
 dDaily=0
 # Number Of Days To Backup (31-0 inclusive | 0 = current day)
 nDays=0
@@ -56,17 +54,17 @@ nDays=0
 kDOM=0
 
 ##### Directories & Executables #####
-# Server Directory (Full path)
+# Server Source Directory (Full path, include trailing slahs)
 sDir="${rRoot}${sName}/server/"
-# Backup Destination Directory (Full path)
+# Backup Destination Directory (Full path, include trailing slash)
 dDir="${rRoot}${sName}/backups/"
-# Server Log Directory (Full path)
-sLog="${rRoot}serverActivity/$log"
-# Screen Start Executable (Full path)
-tExe="${tRoot}server_screen_start.sh"
-# Screen Stop Executable (Full path)
-pExe="${tRoot}server_screen_stop.sh"
-# World Backup Executable (Full path)
-bExe="${tRoot}server_backup.sh"
-# Backup Removal Executable (Full path)
-rExe="${tRoot}server_backup_removal.sh"
+# Server Logs Directory (Full path, include trailing slash)
+lDir="${rRoot}logs/"
+# Screen Start Executable (Include file extension)
+tExe="server_screen_start.sh"
+# Screen Stop Executable (Include file extension)
+pExe="server_screen_stop.sh"
+# World Backup Executable (Include file extension)
+bExe="server_backup.sh"
+# Backup Removal Executable (Include file extension)
+rExe="server_backup_removal.sh"

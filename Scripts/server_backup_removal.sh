@@ -13,56 +13,58 @@ nRE='^[0-9]+$'
 ####################
 # Error Handling
 ####################
-if (( $purge != 1 && $purge != 0 )); then
+if [[ ! $purge =~ $nRE ]] || (( $purge != 1 && $purge != 0 )); then
  (( error+=1 ))
- errMessage+="purge is not set to 0 or 1."$'\n'
+ errMessage+="\"purge\" not 0 or 1."$'\n'
 fi
 
-if (( $dMonthly != 1 && $dMonthly != 0 )); then
+if [[ ! $dMonthly =~ $nRE ]] || (( $dMonthly != 1 && $dMonthly != 0 )); then
  (( error+=1 ))
- errMessage+="dMonthly is not set to 0 or 1."$'\n'
+ errMessage+="\"dMonthly\" not 0 or 1."$'\n'
 fi
 
-if (( $dDaily != 1 && $dDaily != 0 )); then
+if [[ ! $dDaily =~ $nRE ]] || (( $dDaily != 1 && $dDaily != 0 )); then
  (( error+=1 ))
- errMessage+="dDaily is not set to 0 or 1."$'\n'
+ errMessage+="\"dDaily\" not 0 or 1."$'\n'
 fi
 
 if [[ ! $nMonths =~ $nRE ]] || (( $nMonths > 120 || $nMonths < 0 )); then
  (( error+=1 ))
- errMessage+="nMonths is outside of the accepted range or invalid. Set between 0 and 120 inclusive."$'\n'
+ errMessage+="\"nMonths\" beyond accepted range or invalid. Set between 0 and 120 inclusive."$'\n'
 fi
 
 if [[ ! $nDays =~ $nRE ]] || (( $nDays > 31 || $nDays < 0 )); then
  (( error+=1 ))
- errMessage+="nDays is outside of the accepted range or invalid. Set between 0 and 31 inclusive."$'\n'
+ errMessage+="\"nDays\" beyond accepted range or invalid. Set between 0 and 31 inclusive."$'\n'
 fi
 
 if [[ ! $kDOM =~ $nRE ]] || (( $kDOM > 31 || $kDOM < 0 )); then
  (( error+=1 ))
- errMessage+="kDOM is outside of the accepted range or invalid. Set between 0 and 31 inclusive."$'\n'
+ errMessage+="\"kDOM\" beyond accepted range or invalid. Set between 0 and 31 inclusive."$'\n'
+fi
+
+if [[ ! -d "$dDir" || -z "$sentinel" || ! -f "${dDir}${sentinel}" ]]; then
+ (( error+=1 ))
+ errMessage+="Issue(s) - Destination Directory or Sentinel File. Check the configuration, and ensure \"dDir\" exists with \"sentinel\" present."$'\n'
 fi
 
 if (( $error )); then
  echo "$errMessage"
- echo "Exiting with $error errors..."$'\n'
- sleep 5
+ echo "Run the config inspector for more details. Exiting with $error errors..."$'\n'
+ sleep 10
  exit 1
 fi
 
-if [[ ! -f "${dDir}${sentinel}" ]]; then
- echo "Sentinel file not found in destination directory. Exiting..."
- sleep 5
- exit 0
-fi
-
+####################
+# Backup Removal Scheduling
+####################
 # Change the active directory to the server backups folder
 cd "$dDir"
 # Enables the Extended Pattern Matching extension
 shopt -s extglob
 
 ####################
-# Purge Backups
+# Purge
 ####################
 if (( $purge )); then
  rm -rf !($sentinel)
@@ -128,7 +130,7 @@ fi
 
 # Checks each file in the directory and deletes any that are not present in the schedule
 for file in *; do
- # dSchedule is converted to a space delineated string for comparison
+ # schedule is converted to a space delineated string for comparison
  if [[ ! " ${schedule[*]} " =~ " $file " ]] && [[ -f "$file" ]]; then
   rm $file
  fi
