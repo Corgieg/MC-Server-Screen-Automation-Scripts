@@ -15,7 +15,7 @@ sentinel="danger_zone.txt"
 # Servers Root Directory (Full Path, include trailing slash)
 rRoot="/home/minecraft/mcServers/"
 # Scripts Root Directory (Full Path, include trailing slash)
-tRoot="/home/minecraft/scripts/"
+tRoot="/home/minecraft/mcScripts/"
 
 ##### Screen Settings #####
 # Server Socket Name
