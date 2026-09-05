@@ -5,9 +5,9 @@ After=network.target
 [Services]
 Type=oneshot
 User=your_username
-WorkingDirectory=/your/scripts/dir
-EnvironmentFile=/your/scripts/dir/server_config.sh
-ExecStart=/your/scripts/dir/server_stop.sh
+WorkingDirectory=/your/mcScripts/dir
+EnvironmentFile=/your/mcScripts/dir/server_config.sh
+ExecStart=/your/mcScripts/dir/server_stop.sh
 
 [Install]
 WantedBy=multi-user.target
