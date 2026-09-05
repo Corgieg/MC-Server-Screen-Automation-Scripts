@@ -11,7 +11,7 @@ errMessage="Error:"$'\n'
 ####################
 # Error Handling
 ####################
-if [[ ! -d "$sDir" || -z "$sWorld" || ! -f "${sDir}${sWorld}" ]]; then
+if [[ ! -d "$sDir" || -z "$sWorld" || ! -d "${sDir}${sWorld}" ]]; then
  (( error+=1 ))
  errMessage+="Issue(s) - Source Directory or Server's World Folder. Check the configuration, and ensure \"sDir\" exists with \"sWorld\" present."$'\n'
 fi
