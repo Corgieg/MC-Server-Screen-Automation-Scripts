@@ -42,7 +42,7 @@ if [[ -z "$mcGreeting" || -z "$mcSaveMessage" || -z "$mcSaveConfirm" || -z "$mcN
  errMessage+="Issue(s) - one or more Server Message Variables."$'\n'
 fi
 
-if [[ ! -d "$tRoot" || ! -z "$pExe" || ! -f "${tRoot}${pExe}" ]]; then
+if [[ ! -d "$tRoot" || -z "$pExe" || ! -f "${tRoot}${pExe}" ]]; then
  (( error+=1 ))
  errMessage+="Issue(s) - Scripts Root Directory or Screen Stop Executable. Check the configuration, and ensure \"tRoot\" exists with \"pExe\" present."$'\n'
 fi
@@ -112,7 +112,7 @@ ${tRoot}${pExe}
 
 # Execute world backup for the Minecraft server if backup is enabled
 if (( $backup )); then
- if [[ ! -z "$bExe"  || ! -f "${tRoot}${bExe}" ]]; then
+ if [[ -z "$bExe"  || ! -f "${tRoot}${bExe}" ]]; then
   echo "Issue(s) - World Backup Executable. Run the config inspector for more details. Exiting..."
   sleep 5
   exit 1
@@ -122,7 +122,7 @@ fi
 
  # Execute backup removal for the Minecraft server if remove is enabled
 if (( $remove )); then
- if [[ ! -z "$rExe"  || ! -f "${tRoot}${rExe}" ]]; then
+ if [[ -z "$rExe"  || ! -f "${tRoot}${rExe}" ]]; then
   echo "Issue(s) - Backup Removal Executable. Run the config inspector for more details. Exiting..."
   sleep 5
   exit 1
