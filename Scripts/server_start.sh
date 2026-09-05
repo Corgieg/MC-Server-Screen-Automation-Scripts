@@ -16,12 +16,12 @@ if [[ -z "$sSoc" ]]; then
  errMessage+="\"sSoc\" null or unset."$'\n'
 fi
 
-if [[ ! -d "$tRoot" || ! -z "$tExe" || ! -f "${tRoot}${tExe}" ]]; then
+if [[ ! -d "$tRoot" || -z "$tExe" || ! -f "${tRoot}${tExe}" ]]; then
  (( error+=1 ))
  errMessage+="Issue(s) - Scripts Root Directory or Screen Start Executable. Check the configuration, and ensure \"tRoot\" exists with \"tExe\" present."$'\n'
 fi
 
-if [[ ! -d "$sDir" || ! -z "$sExe" || ! -f "${sDir}${sExe}" ]]; then
+if [[ ! -d "$sDir" || -z "$sExe" || ! -f "${sDir}${sExe}" ]]; then
  (( error+=1 ))
  errMessage+="Issue(s) - Source Directory or Server Start Executable. Check the configuration, and ensure \"sDir\" exists with \"sExe\" present."$'\n'
 fi
