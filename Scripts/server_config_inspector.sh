@@ -142,27 +142,27 @@ fi
 ####################
 # Executables
 ####################
-if [[ ! -z "$tExe" ]]; then
+if [[ -z "$tExe" ]]; then
  (( error+=1 ))
  errMessage+="\"tExe\" null or unset."$'\n'
 fi
 
-if [[ ! -z "$sExe" ]]; then
+if [[ -z "$sExe" ]]; then
  (( error+=1 ))
  errMessage+="\"sExe\" null or unset."$'\n'
 fi
 
-if [[ ! -z "$pExe" ]]; then
+if [[ -z "$pExe" ]]; then
  (( error+=1 ))
  errMessage+="\"pExe\" null or unset."$'\n'
 fi
 
-if [[ ! -z "$bExe" ]]; then
+if [[ -z "$bExe" ]]; then
  (( error+=1 ))
  errMessage+="\"bExe\" null or unset."$'\n'
 fi
 
-if [[ ! -z "$rExe" ]]; then
+if [[ -z "$rExe" ]]; then
  (( error+=1 ))
  errMessage+="\"rExe\" null or unset."$'\n'
 fi
@@ -195,7 +195,7 @@ if [[ ! -f "${tRoot}${rExe}" ]]; then
  errMessage+="Backup Removal Executable not in Scripts Root Directory. Add \"rExe\" to directory \"tRoot\"."$'\n'
 fi
 
-if [[ ! -f "${sDir}${sWorld}" ]]; then
+if [[ ! -d "${sDir}${sWorld}" ]]; then
  (( error+=1 ))
  errMessage+="Server's World Folder not in Source Directory. Add \"sWorld\" to directory \"sDir\"."$'\n'
 fi
